@@ -1,5 +1,23 @@
 # AWS
 
+## Links
+
+- [What is the Cloud ?](#what-is-the-cloud-)
+- [AWS and the cloud](#aws-and-the-cloud-)
+- [6 key benefits](#6-key-benefits-)
+- [Global Infrastructure?](#global-infrustructure)
+- [Security on AWS](#security-on-aws)
+- [IAM](#iam)
+- [Creating an EC2 Instance](#creating-an-ec2-instance)
+- [EC2](#ec2)
+- [Serverless](#serverless)
+- [VPC](#vpc)
+- [NACLS & Security Groups](#nacls--security-groups)
+- [Storage on AWS](#storage-on-aws)
+- [Databases on AWS](#databases-on-aws)
+- [Monitoring](#monitoring)
+- [Optimization and Scaling](#optimization-and-scaling)
+
 # [`What is the Cloud ?`]
 
 * Cloud computing delivers IT resources over the internet on a pay-as-you-go basis, allowing companies to avoid owning hardware and physical infrastructure.
@@ -397,3 +415,103 @@ AWS provides these services, enabling businesses to run applications without man
     - you manage Query optimization and data security
 
 <img src="img/aws52.png" style="width:100%">
+
+## `RDS` :
+
+* RDS is a managed service for relational SQL databases, handling setup, scaling, backups, and maintenance
+* multi-az deployment ensure high availability with data replication
+* backing up data using Automatic Backups  and Manual Snapshots 
+
+<img src="img/aws54.png" style="width:100%">
+
+* RDS supports multiple database engines
+
+<img src="img/aws55.png" style="width:100%">
+
+## `Dynamodb` :
+
+* DynamoDB is a fully managed NoSQL database that provides fast, predictable performance and seamless scalability
+* Tables store items, items consist of attributes which are individual data elements
+
+<img src="img/aws56.png" style="width:100%">
+
+* creating a table 
+
+<img src="img/aws57.png" style="width:100%">
+
+---
+
+| **Database Type**  | **Use Cases**                                                          | **AWS Service**                                                |
+|--------------------|------------------------------------------------------------------------|----------------------------------------------------------------|
+| Relational         | Traditional applications, ERP, CRM, e-commerce                         | Amazon RDS, Amazon Aurora, Amazon Redshift                     |
+| Key-value          | High-traffic web apps, e-commerce systems, gaming applications         | Amazon DynamoDB                                                |
+| In-memory          | Caching, session management, gaming leaderboards, geospatial apps      | Amazon ElastiCache for Memcached, Amazon ElastiCache for Redis |
+| Document           | Content management, catalogs, user profiles                            | Amazon DocumentDB (with MongoDB compatibility)                 |
+| Wide column        | High-scale industrial apps for equipment maintenance, fleet management | Amazon Keyspaces (for Apache Cassandra)                        |
+| Graph              | Fraud detection, social networking, recommendation engines             | Amazon Neptune                                                 |
+| Time series        | IoT applications, DevOps, industrial telemetry                         | Amazon Timestream                                              |
+| Ledger             | Systems of record, supply chain, registrations, banking transactions   | Amazon QLDB                                                    |
+
+---
+
+# [`Monitoring`]
+
+## `Cloud Watch` :
+
+* CloudWatch is a monitoring service for AWS resources and applications, providing data and insights to help you keep your infrastructure running smoothly
+
+* create a dashboard and add widgets
+
+<img src="img/aws58.png" style="width:100%">
+
+* setting up an alarm
+
+<img src="img/aws59.png" style="width:100%">
+
+* adding alarm notifications
+
+<img src="img/aws60.png" style="width:100%">
+<img src="img/aws61.png" style="width:100%">
+
+# [`Optimization and Scaling`]
+
+## `target groups` :
+
+* Target Groups are used with Application Load Balancers to route requests to one or more registered targets
+* Targets can be EC2 instances, containers, or IP addresses
+
+<img src="img/aws63.png" style="width:100%">
+
+* Health checks ensure only healthy targets receive traffic
+
+<img src="img/aws64.png" style="width:100%">
+
+* add and register targets
+
+<img src="img/aws65.png" style="width:100%">
+
+## `Load balancers (ELB)` :
+
+* Load balancers distribute incoming traffic across multiple targets, ensuring high availability and fault tolerance
+* ELB supports three types of load balancers:
+    - Application Load Balancer (ALB): Best for HTTP/HTTPS traffic, supports path-based routing
+    - Network Load Balancer (NLB): Best for TCP/UDP traffic, supports static IP addresses
+    - Classic Load Balancer (CLB): Legacy option for HTTP/HTTPS traffic
+
+<img src="img/aws62.png" style="width:100%">
+
+
+## `Auto Scaling` :
+
+### `launch templates` :
+
+* Launch templates are used to create new instances with specific configurations, such as AMI, instance type, and security groups
+
+<img src="img/aws66.png" style="width:100%">
+
+### `auto scaling groups` :
+
+* Auto Scaling Groups automatically adjust the number of instances in response to demand, ensuring you have the right amount of capacity
+
+<img src="img/aws67.png" style="width:100%">
+
