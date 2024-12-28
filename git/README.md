@@ -4,7 +4,7 @@
    - [show version](#show-version-)
    - [set up name and email / repo](#set-up-name-and-email--repo-)
    - [set up a text default editor](#set-up-a-text-default-editor-)
-   - [initialize current folder as a git repo](#initialize-current-folder-as-a-git-repo-)
+   - [initialize current folder as a git repo](#initialize-current-folder-as-a-git-repo--)
    - [check config](#check-config-)
    - [clone a repo](#clone-a-repo-)
    - [show repo status](#show-repo-status-)
@@ -17,25 +17,25 @@
    - [ignore files](#ignore-files-)
    - [track empty dirs](#track-empty-dirs-)
    - [aliases](#aliases-)
-   - [update or change a commit](#update-or-change-a-commit)
-- [USING GIT REMOTELY](#using-git-remotely-)
+   - [update or change a commit](#update-or-change-a-commit-)
+- [USING GIT REMOTELY](#using-git-remotly)
    - [local/remote communication](#localremote-communication-)
-   - [set up|remove remote repo](#setupremove-remote-repo-)
+   - [set up|remove remote repo](#set-upremove-remote-repo-)
    - [ssh](#ssh-)
    - [push](#push-)
    - [pull](#pull-)
    - [conflicts](#conflicts-)
-   - [set up personal access token PAT](#set-up-personal-access-token-pat)
+   - [set up personal access token PAT](#set-up-personal-access-token-pat-)
 - [BRANCHES](#branches)
    - [create and switch between branches](#create-and-switch-between-branches-)
    - [merging](#merging-)
    - [rebase](#rebase-)
-   - [squashing commits](#squashing-commits-)
+   - [squashing commits](#squaching-commits-)
    - [pull requests & merging branches in GitHub UI](#pull-requests--merging-branches-in-github-ui-)
    - [update the log](#update-the-log-)
    - [control HEAD pointer position](#control-head-pointer-position-)
 - [GIT WORKFLOWS WORKING WITH COLLABORATORS](#git-workflows-working-with-collaborators)
-   - [adding collaborators](#adding-collaborators-)
+   - [adding collaborators](#adding-collaborators--)
    - [adding branch protection rules](#adding-branch-protection-rules-)
    - [git flow](#git-flow-)
    - [forking](#forking-)
@@ -115,7 +115,7 @@
         * add a ".gitkeep" inside an empty dir to keep track of it
         * ".gitkeep" file is just a convention not a special file
 
-## `alaises` :
+## `aliases` :
 
         - git config --global alias."alias" "command"
 
