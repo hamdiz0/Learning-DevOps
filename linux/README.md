@@ -1,22 +1,76 @@
-# `linux`
+# `linux`-
 
-# `conferming sudo privelege` :
+- [Conferming Sudo Privelege](#conferming-sudo-privelege-)
+- [Username](#username-)
+- [Sets a Password for Any User](#sets-a-password-for-any-user-)
+- [Navigate Dirs (Returns to Home)](#navigate-dirs-returns-to-home-)
+- [History Show Command History](#history-show-command-history-)
+- [Man, Help & TLDR](#man-help-tldr-)
+- [Linux Hierarchy](#linux-hierarchy-)
+- [LS](#ls-)
+- [Touch Create](#touch-create-)
+- [CP Copy](#cp-copy-)
+- [Mkdir Make Directory](#mkdir-make-directory-)
+- [RM Remove](#rm-remove-)
+- [LN Links](#ln-links-)
+- [Show File Size](#show-file-size-)
+- [Find](#find-)
+- [Which/Locate](#which-locate-)
+- [Tar](#tar-)
+- [Show Storage Devices List](#show-storage-devices-list-)
+- [VIM](#vim-)
+- [Show File Contents](#show-file-contents-)
+- [Cut -d (Delimiter ":,|") -f (Field Column Number)](#cut-d-delimeter--f-field-column-number-)
+- [Grep Keyword File (2>/dev/null : Ignore Errors)](#grep-keyword-file-2devnull-ignore-errors-)
+- [Regex (Always Between SQ 'Regex') Grep](#regex-always-betwen-sq-regex-grep-)
+- [TR Translate](#tr-translate-)
+- [AWK](#awk-)
+- [SED](#sed-)
+- [Change User](#change-user-)
+- [Sudo Visudo, Config Sudoers Privileges](#sudo-visudo-config-sudoers-privileges-)
+- [Nmap, Arp-Scan & Bettercap](#nmap-arp-scan-bettercap-)
+- [Linux Structure](#linux-structure-)
+- [Redirection](#redirection-)
+- [Pipe | Tee](#pipe-tee-)
+- [Bash](#bash-)
+- [Env Environment](#env-environment-)
+- [Variables](#variables-)
+- [Alias/Unalias](#alias-unalias-)
+- [Ctrl+Key](#ctrl-key-)
+- [Bash Startup Files](#bash-startup-files-)
+- [Users/Groups](#users-groups-)
+- [Session Management](#session-management-)
+- [Permissions](#permissions-)
+- [Diff](#diff-)
+- [Partitions, Mount/Unmount, Fdisk (MBR), Gdisk (GPT)](#partitions-mount-unmount-fdisk-mbr-gdisk-gpt-)
+- [Networking](#networking-)
+- [Netstat](#netstat-)
+- [Systemd](#systemd-)
+- [RPM Apt-Cache](#rpm-apt-cache-)
+- [UFW Firewall](#ufw-firewall-)
+- [SSH](#ssh-)
+- [Managing Time](#managing-time-)
+- [Process Management](#process-management-)
+- [Task/Job Scheduling](#task-job-scheduling-)
+- [Log Files](#log-files)
+
+## `conferming sudo privelege` :
 
         sudo ls /root
 
-# `username` :
+## `username` :
 
         whoami
 
-# `sets a password for any user` :
+## `sets a password for any user` :
 
         passwd user
 
-# `navigate dirs(returns to Home)` :
+## `navigate dirs(returns to Home)` :
 
         sudo ls /root
 
-# `history show command history` :
+## `history show command history` :
 
         history -c clear
         history -d delete specific line
@@ -25,7 +79,7 @@
         (history) !number repeat command based on number
         (history) ls -l .bash_history (history file in the sys)
 
-# `man ,help & tldr` :
+## `man ,help & tldr` :
 
         man manuel for commands ("q" to quit, "/" to search, "n" next occurence)
         man "section number" "command"
@@ -37,7 +91,7 @@
         command --help
         tldr simple help
 
-# `linux hierarchy` :
+## `linux hierarchy` :
 
         (linux hier) bin|usr/bin => binary executables progs (sbin|usr/sbin sudo)
         (linux hier) lib|lib64 => libraries
@@ -48,7 +102,7 @@
         (linux hier) sys => manages haedware
         (linux hier) usr => put ur scripts in usr/local/bin to make availble in the sys
 
-# `ls` :
+## `ls` :
 
         ls -d, ls -R (like tree)
         ls a* (any thing after a even none) 
@@ -57,34 +111,34 @@
         ls a[a-e]* (anything btw a and e )
         ls -lrt (show files in order of last modification)
 
-# `touch create` :
+## `touch create` :
 
         touch file{1..100}
 
-# `cp copy` :
+## `cp copy` :
 
         cp /path/file /path/newfilename
 
-# `mkdir make directory` :
+## `mkdir make directory` :
 
         mkdir -p /data/{sales,account}
 
-# `rm remove` :
+## `rm remove` :
 
         (danger) rm -rf / --no-preserve-root #remove entire sys
 
-# `ln links` :
+## `ln links` :
 
         ln #hardlink
         ln -s #subolic link
 
-# `show file size` :
+## `show file size` :
 
         du -sh file|dir
         du -sh . (show current folder size)
         du -sh * (show each file size in the current folder)
 
-# `find` :
+## `find` :
 
         (find) -name, -user, -size (+2G,M,k), -type(d,f), -path
         find / -user "hamdi" -exec cp {} (all found files to) /path \; (closing)
@@ -95,26 +149,26 @@
         find path -name "file" -not -path "execludedpath/*" (ignore path "*": all dirs under this path )
         find path -perm /444(u,g "or" o may have perm) ,-444(u,g "and" o must have perm) ,444 (exactly)
 
-# `which/locate` :
+## `which/locate` :
 
         sudo updatedb
         which "package/command" (show its location)
 
-# `tar` :
+## `tar` :
 
         sudo tar cvf name.tar /path (compress)
         sudo tar xvf name.tar /path (extract -C to change output path)
         sudo tar tvf name.tar /path (list content)
         (tar) copression meth gzip -z, bzip2 -j, xzip -J => compression
 
-# `show storage devices list` :
+## `show storage devices list` :
 
         lsblk (best) blockdevices
         mount mounts(usb)
         df -h mounts+diskspace 
         findmnt
 
-# `vim` :
+## `vim` :
 
         (vim) i or o insert mode
         (vim) Esc return to command mode :
@@ -136,23 +190,23 @@
         (vim) :se number show line num
         (vim) r replace character
 
-# `show file contents` :
+## `show file contents` :
 
         cat -b, -n(nuber lines not empty) tac (cat reversed)
         more/less (less > more) tail/head
 
-# `cut -d(delimeter ":,|") -f(field column number)` :
+## `cut -d(delimeter ":,|") -f(field column number)` :
 
         cut -d : -f3 /etc/passwd | sort -n (numeric sort)
 
-# `grep keyword file: (2>/dev/null : ignore errors)` :
+## `grep keyword file: (2>/dev/null : ignore errors)` :
 
         grep -i ignore case
         grep -v all line that dont conatain the pattern
         grep -A5, B5, C5(A5+B5) : first line with occurence +/- 5 lines
         grep -R recurseve search
 
-# `regex (always betwen sq 'regex') grep` :
+## `regex (always betwen sq 'regex') grep` :
 
         grep '^hamdi' begenning of the line
         grep 'hamdi$' end of the line
@@ -163,36 +217,36 @@
         grep -E 'bx?t' zero or one time
         grep -E '(svm|vmx)' /proc/cpuinfo serach either svm or vmx (check virtualisation on cpu)
 
-# `tr translate` :
+## `tr translate` :
 
         tr [:lower:] [:upper:]
         tr [a-z] [A-Z]
 
-# `awk`:
+## `awk`:
 
         awk -F : '{ print $1 }' /etc/passwd (like cut -d : -f1 /etc/passwd)
         awk 'length ($0) > 40 ' /etc/passwd lines len > 40
         awk -F : '/hamdi/ {print $3}' /etc/passwd user id
 
-# `sed`:
+## `sed`:
 
         sed -n 5p /etc/passwd show 5th line
         sed -i s/anna/hamdi/g text (s:substitute anna with hamdi g:global)
         sed -i  -e '2d' text (-e: edit ,delete 2end line)
         for i in *txt ;do sed -i 's/hello/bye/g' $i ; done
 
-# `change user` :
+## `change user` :
 
         su - "user name" (switch user)
         sudo -i (opens a sudo prevelidged shell)
 
-# `sudo visudo ,config sudoers priveliges` : 
+## `sudo visudo ,config sudoers priveliges` : 
 
         (visudo) user ALL=/usr/bin/passwd 
         /usr/bin/passwd root (gives user passwd capabilities)
         (visudo) Defaults timestamp_type=global,timestamp_timeout=240 (change time needed to reenter password)
                                                                        
-# `nmap ,arp-scan & bettercap`:
+## `nmap ,arp-scan & bettercap`:
 
         - find devices on local net : nmap, arp-scan
                 sudo nmap (all info) 192.168.1.0/24 (-sn ip/mac/up|down)
@@ -204,7 +258,7 @@
                 (bettercap) set arp.spoof.targets 192.168.1.20 ,arp.spoof on ,net.sniff on
                 (bettercap) set dns.spoof.domains facebook.com ,dns.spoof on
 
-# `linux structure` :
+## `linux structure` :
 
         software => kernel => hardware
         command => shell =>  glibe  => kernel                     
@@ -212,7 +266,7 @@
                               ||                                         
                 services => systemd (manger of evrything)               
 
-# `redirection` :
+## `redirection` :
 
         (redirection) <  input
         (redirection) >  output override
@@ -220,20 +274,20 @@
         (redirection) 2>/dev/null redirect errors
         (redirection) &>/file put output+errors in
 
-# `pipe | tee` :
+## `pipe | tee` :
 
         (pipe) ps aux | tee psfile.txt | grep ssh (tee will put the output of ps in psfile.txt)
 
-# `bash` :
+## `bash` :
 
         bash creates a subshell under current shell
 
-# `env environment` :
+## `env environment` :
 
         env (shows environment vars)
         /etc/environment
 
-# `variables` :
+## `variables` :
 
         (vars) system (default linux) ,environment (application use)
         (vars) varname = value (define var "only known to the current shell")
@@ -241,12 +295,12 @@
         (vars) export varname=value (no $ sign ,define var "all shells")
         (vars) $PATH var (executable commands paths "add file.sh to one of $PATH paths to make it accessible in shell", "usr/local/bin all users can use it")
 
-# `alias/unalias` :
+## `alias/unalias` :
 
         alias name="command" (clear="cls")
         unalias name
 
-# `crtl+key` :
+## `crtl+key` :
 
         crtl+l clear
         crtl+u clear line
@@ -256,7 +310,7 @@
         crtl+d exit
         crtl+z temporarily stop a job
 
-# `bash startup files` :
+## `bash startup files` :
 
         (bash startfiles) /etc/environment
         (bash startfiles) /etc/profile.d (executed while user login "scripts will be executed when added in this dir")
@@ -266,7 +320,7 @@
         (bash startfiles) login/out or source /etc/profile.d/history.sh to save changes
         (bash startfiles) find a bashrc file under /etc add a script "alias ipc='ip a'" will be saved for all users
 
-# `users/groups` :
+## `users/groups` :
 
         (users/groups) "/etc/passwd" | "/etc/group" are where "user" | "group" info is stored
         (users/groups) id show current user id "uid" ,current group owner "gid" and groups like sudo or wheel
@@ -277,13 +331,13 @@
         (users/groups) groupdel/userdel groupmod
         (users/groups) useradd "user" -G "group1","group2",... (creates a user and enroll him multiple groups if user exists use usermod -aG to append "not create new sec groups")
 
-# `session management` :
+## `session management` :
 
         (session) who/w current logins
         (session) loginctl (list-sessions ,show-session "id" ,show-user "user")
         (session) loginctl terminate-session "session-id"
 
-# `permissions` :
+## `permissions` :
 
         (permissions)           |   file   |   dir
         (permissions) read (4)  |   read   |   list (ls)  (u need to have r per to read a file "dir r per dont intervene")
@@ -296,11 +350,11 @@
         (permissions) chmod +t (stiky bit "dir permession" only modify if u own the file/dir "3000")
         (permissions) /etc/skel/.bashrc (make default changes)
 
-# `diff` :
+## `diff` :
 
         diff file.txt file.txt (show differences </> " '>' the differnce exist on the right file ")
 
-# `partitions ,mount|ummount ,fdisk(MBR) ,gdisk(GPT) "gdisk for bigger disks"`:
+## `partitions ,mount|ummount ,fdisk(MBR) ,gdisk(GPT) "gdisk for bigger disks"` :
 
         (partitions) create partition => create system file => mount
         (partitions) lsblk (monitor avaible disks)
@@ -310,7 +364,7 @@
         (partitions mount) lsof (find wich processes are keeping the divice busy)
         (partitions per mount) /etc/fstab (add permenet mounts "mount -a chek for errors")
 
-# `networking` :
+## `networking` :
 
         (net ipv6) ::1/128 localhost ,::/ default route ,2000::/3 global unicast @s ,fd00::/8 unique local @s "private like 192.168.. "
         (net ipv6) ff00::/8 ,fe80::/64 link-local @s "automaticly assined base on the mac@"
@@ -326,12 +380,12 @@
         (net) dig "dns name(google.com)" (reveals its ip@)
         (net) nmtui (configure networks)
 
-# `netstat` :
+## `netstat` :
 
         (netstat) apt install net-tools
         (netstat) netstat -lntp (displays detailed information about listening network services)
         
-# `systemd` :
+## `systemd` :
 
         (systemd) "default"|"custom" units "/user/lib/systemd/system"|"/etc/systemd/system"
         (systemd systemctl) systemctl -t help "avaible utilitys"
@@ -346,20 +400,20 @@
         (systemd systemctl) systemctl start default.target
         (systemd service wsl) service start "service" ,service status "service"
 
-# `rpm apt-cache` :
+## `rpm apt-cache` :
 
         rpm -qf "file" (which package a file is from)
         rpm -ql "package" queries database to list package contents
         rpm -qpc "package" list confid files in a package file "package.rpm"
         rpm -qp --scripts "package" show package scripts
 
-# `ufw firewall` :
+## `ufw firewall` :
 
         (ufw) configure firewall settings
         (ufw) ufw allow|deny proto tcp from 192.168.0.4 to any(ip@ on current host) port 22
         (ufw) ufw deny|allow proto udp from any to any port 8412:8500 (port range 8412=>8500)
 
-# `ssh` :
+## `ssh` :
 
         (ssh) ssh user|ip@ , scp file user|ip@:path (copy files securly)
         (ssh) /etc/ssh/sshd_config :
@@ -369,13 +423,13 @@
         (ssh) ssh-keygen ,ssh-copy-id "user@ip" ,ssh-agent /bin/bash ,ssh-add
         
 
-# `managing time` :
+## `managing time` :
 
         (time) touch file-$(date +%d-%B-%Y).tar (put the date in the file name)
         (time) hwclock (hardware clock) ,timedatectl
         (time) timedatectl set-ntp ,timedatectl timesync-status ,chronyc sources ,chronyc tracking
 
-# `process management` :
+## `process management` :
 
         (process) jobs (view current jobs) ,bg (run jobs in the background "same as job &") ,fg "job number" (move a job to the foreground)
         (process) top (1:show cpus ,f:edit shown info ,z:color ,w:saves config ,r:renice ,k:kill process)
@@ -386,7 +440,7 @@
         (process) kill "pid" ,killall "name" ,kill SIGTERM "stop process" ,kill SIGKILL "force off a process" ,man 7 signal (15 ,9)
         (process) dd if=/dev/zero of=/dev/null
 
-# `task/job scheduling` :
+## `task/job scheduling` :
 
         (task/job scheduling) /etc/crontab ,crontab -e (edit cron jobs for current user)
         (task/job scheduling) Example of job definition: ("*" for evry min/h/d/m/y)
@@ -401,7 +455,7 @@
         (task/job scheduling) systemctl list-units -t timer (show systemd timers) ,systemctl list-unit-files -t timer "fstrim*"
         (task/job scheduling) at "time" => command ,atq (show shceduled jobs) ,at rm (remove job) "at is used only in the current terminal session"
 
-# `log files` :
+## `log files` :
 
         (log files) journalctl ,journalctl -f ,/etc/systemd/journald.conf
         (log files) logger (write to the log system)
