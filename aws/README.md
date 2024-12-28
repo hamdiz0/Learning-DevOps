@@ -1,7 +1,5 @@
 # AWS
 
-## Links
-
 - [What is the Cloud ?](#what-is-the-cloud-)
 - [AWS and the cloud](#aws-and-the-cloud-)
 - [6 key benefits](#6-key-benefits-)

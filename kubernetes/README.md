@@ -1,8 +1,24 @@
 # Kubernetes
 
-* kubernetes is a container orchestration tool
-* automating deployment ,scaling and management of containerized apps
-* Kubernetes Is a highly portable, horizontally scalable, open-source container orchestration system with automated deployment and simplified management capabilities
+# Links:
+
+- [Kubernetes](#kubernetes)
+- [Container Orchestration](#container-orchestration)
+- [K8s Concepts](#k8s-concepts)
+- [K8s Architecture](#k8s-architecture)
+- [K8s Objects](#k8s-objects)
+- [Kubectl](#kubectl)
+  - [Commands](#commands)
+  - [Configuration Files](#configuration-files)
+- [Ingress](#ingress)
+- [Antipatterns](#antipatterns)
+- [Kubernetes Basics](#kubernetes-basics)
+- [Autoscaling](#autoscaling)
+- [Deployment Strategies](#deployment-strategies)
+- [Rolling Updates](#rolling-updates)
+- [Config Maps and Secrets](#config-maps-and-secrets)
+  - [Config Maps](#config-maps)
+  - [Secrets](#secrets)
 
 # [`contatiner orchestration`] :
 

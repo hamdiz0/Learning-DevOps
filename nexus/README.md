@@ -1,6 +1,27 @@
 # `NEXUS`
-	
-	* nexus is an artifact repo manager
+
+- [NEXUS](#nexus)
+	- [artifacts](#artifacts)
+	- [artifact repo manager](#artifact-repo-manager)
+	- [features of nexus](#features-of-nexus)
+- [Setting up Nexus](#setting-up-nexus)
+- [Repo Types](#repo-types)
+	- [proxy repo](#proxy-repo)
+	- [hosted repo](#hosted-repo)
+	- [group repo](#group-repo)
+- [Creating a Repo](#creating-a-repo)
+- [Creating an Authorized User](#creating-an-authorized-user)
+- [Uploading Jar Files to Nexus (Maven & Gradle)](#uploading-jar-files-to-nexus-maven--gradle)
+	- [using gradle](#using-gradle)
+	- [using maven](#using-maven)
+- [Nexus API](#nexus-api)
+	- [access the REST endpoint of nexus](#access-the-rest-endpoint-of-nexus)
+- [Blob Storage](#blob-storage)
+- [Components vs Assets](#components-vs-assets)
+	- [components](#components)
+	- [assets](#assets)
+	- [docker](#docker)
+- [Clean up Policies](#clean-up-policies)
 
 ## `artifacts` :
 

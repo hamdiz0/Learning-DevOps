@@ -1,5 +1,16 @@
 # `BUILD TOOLS`
 
+- [Artifacts](#artifacts)
+- [Settings up build tools](#settings-up-build-tools)
+    - [Linux](#linux)
+    - [Win](#win)
+- [Basic commands](#basic-commands)
+    - [Maven & Gradle](#maven--gradle)
+    - [Npm](#npm)
+- [Dependencies and plugins](#dependencys-and-plugins)
+- [Npm/Yarn vs Gradle/Maven (package managers)](#npmyarn-vs-gradlemaven-package-managers)
+
+
 # `artifacts` :
 
     * apps need to be deployed on a production server 
