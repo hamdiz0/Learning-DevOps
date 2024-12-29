@@ -165,178 +165,177 @@
 ### terraform variables
 
 #### variable declaration in `variables.tf`:
-    ```hcl
-    variable "filename" {
-        type        = string
-        description = "Path to the file"
-        default     = "/tmp/pets.txt"
-    }
+```hcl
+variable "filename" {
+    type        = string
+    description = "Path to the file"
+    default     = "/tmp/pets.txt"
+}
 
-    variable "content" {
-        type        = string
-        description = "Content of the file"
-        default     = "I love pets!"
-    }
+variable "content" {
+    type        = string
+    description = "Content of the file"
+    default     = "I love pets!"
+}
 
-    variable "file_permission" {
-        type        = string
-        description = "File permissions"
-        default     = "0700"
-    }
-    ```
+variable "file_permission" {
+    type        = string
+    description = "File permissions"
+    default     = "0700"
+}
+```
 #### using variables in `main.tf`:
+```hcl
+resource "local_file" "pet" {
+    filename        = var.filename
+    content         = var.content
+    file_permission = var.file_permission
+}
+```
+- exmple :
+
     ```hcl
-    resource "local_file" "pet" {
-        filename        = var.filename
-        content         = var.content
-        file_permission = var.file_permission
+    #variables.tf
+    variable "ami" {
+        type        = string
+        description = "AMI ID"
+    }
+
+    variable "instance_type" {
+        type        = string
+        description = "t2.micro"
     }
     ```
-    - exmple :
-
-        ```hcl
-        #variables.tf
-        variable "ami" {
-            type        = string
-            description = "AMI ID"
-        }
-
-        variable "instance_type" {
-            type        = string
-            description = "t2.micro"
-        }
-        ```
-        ```hcl
-        # main.tf
-        resource "aws_instance" "web-server" {
-            ami           = var.ami
-            instance_type = var.instance_type
-        }
-        ```
+    ```hcl
+    # main.tf
+    resource "aws_instance" "web-server" {
+        ami           = var.ami
+        instance_type = var.instance_type
+    }
+    ```
 #### Ways to set variables:
 
-    - In terraform.tfvars file:
-        ```hcl
-        filename = "/tmp/dogs.txt"
-        content  = "I love dogs!"
-        ```
-    - Command line: 
-        ```
-        terraform apply -var="filename=/tmp/cats.txt"
-        export TF_VAR_filename="/tmp/hamsters.txt"
-        ```
-    - Environment variables:
-        ```
-        export TF_VAR_filename="/tmp/hamsters.txt"
-        ```
+- in terraform.tfvars file:
+    ```hcl
+    filename = "/tmp/dogs.txt"
+    content  = "I love dogs!"
+    ```
+- command line: 
+    ```sh
+    terraform apply -var="filename=/tmp/cats.txt"
+    ```
+- environment variables:
+    ```sh
+    export TF_VAR_filename="/tmp/hamsters.txt"
+    ```
 #### Variable types:
-    - string: Simple text
+- string: Simple text
+    ```hcl
+    variable "name" {
+        type    = string
+        default = "John"
+    }
+    ```
+- number: Any numeric value
+    ```hcl
+    variable "age" {
+        type    = number
+        default = 25
+    }
+    ```
+- bool: True or false
+    ```hcl
+    variable "active" {
+        type    = bool
+        default = true
+    }
+    ```
+- list: Ordered collection
+    ```hcl
+    variable "colors" {
+        type    = list(string)      # string,number,bool
+        default = ["red", "blue"]
+    }
+    ```
+    * calling the variable:
         ```hcl
-        variable "name" {
-            type    = string
-            default = "John"
+        # Access first element
+        resource "local_file" "color_file" {
+            filename = "/tmp/color.txt"
+            content  = var.colors[0]  # Returns "red"
         }
         ```
-    - number: Any numeric value
-        ```hcl
-        variable "age" {
-            type    = number
-            default = 25
-        }
-        ```
-    - bool: True or false
-        ```hcl
-        variable "active" {
-            type    = bool
-            default = true
-        }
-        ```
-    - list: Ordered collection
-        ```hcl
-        variable "colors" {
-            type    = list(string)      # string,number,bool
-            default = ["red", "blue"]
-        }
-        ```
-        * calling the variable:
-            ```hcl
-            # Access first element
-            resource "local_file" "color_file" {
-                filename = "/tmp/color.txt"
-                content  = var.colors[0]  # Returns "red"
-            }
-            ```
 
-    - map: Key-value pairs
+- map: Key-value pairs
+    ```hcl
+    variable "user" {
+        type = map(string)        # string,number,bool
+        default = {
+            name = "john"
+            role = "admin"
+        }
+    }
+    ```
+    * calling the variable:
         ```hcl
-        variable "user" {
-            type = map(string)        # string,number,bool
-            default = {
-                name = "john"
-                role = "admin"
-            }
+        # Access map values
+        resource "local_file" "user_file" {
+            filename = "/tmp/user.txt"
+            content  = var.user["name"]  # Returns "john"
         }
         ```
-        * calling the variable:
-            ```hcl
-            # Access map values
-            resource "local_file" "user_file" {
-                filename = "/tmp/user.txt"
-                content  = var.user["name"]  # Returns "john"
-            }
-            ```
-    - set: unique collection (a list with no duplicate values)
+- set: unique collection (a list with no duplicate values)
+    ```hcl
+    variable "tags" {
+        type    = set(string)      # string,number,bool
+        default = ["web", "prod"]
+    }
+    ```
+    * calling the variable:
         ```hcl
-        variable "tags" {
-            type    = set(string)      # string,number,bool
-            default = ["web", "prod"]
+        # Access set values
+        resource "local_file" "tag_file" {
+            filename = "/tmp/tag.txt"
+            content  = join(",", var.tags)  # Returns "web,prod"
         }
         ```
-        * calling the variable:
-            ```hcl
-            # Access set values
-            resource "local_file" "tag_file" {
-                filename = "/tmp/tag.txt"
-                content  = join(",", var.tags)  # Returns "web,prod"
-            }
-            ```
-    - object: complex data structure
+- object: complex data structure
+    ```hcl
+    variable "user" {
+        type = object({
+            name = string
+            role = string
+            age  = number
+        })
+        default = {
+            name = "john"
+            role = "admin"
+        }
+    }
+    ```
+    * calling the variable:
         ```hcl
-        variable "user" {
-            type = object({
-                name = string
-                role = string
-                age  = number
-            })
-            default = {
-                name = "john"
-                role = "admin"
-            }
+        # Access object values
+        resource "local_file" "user_file" {
+            filename = "/tmp/user.txt"
+            content  = var.user.name  # Returns "john"
         }
         ```
-        * calling the variable:
-            ```hcl
-            # Access object values
-            resource "local_file" "user_file" {
-                filename = "/tmp/user.txt"
-                content  = var.user.name  # Returns "john"
-            }
-            ```
-    - tuple: ordered collection with fixed number of elements
+- tuple: ordered collection with fixed number of elements
+    ```hcl
+    variable "user" {
+        type = tuple([string,number])
+        default = ["john",25]
+    }
+    ```
+    * calling the variable:
         ```hcl
-        variable "user" {
-            type = tuple([string,number])
-            default = ["john",25]
+        # Access tuple values
+        resource "local_file" "user_file" {
+            filename = "/tmp/user.txt"
+            content  = var.user[0]  # Returns "john"
         }
         ```
-        * calling the variable:
-            ```hcl
-            # Access tuple values
-            resource "local_file" "user_file" {
-                filename = "/tmp/user.txt"
-                content  = var.user[0]  # Returns "john"
-            }
-            ```
 #### resource attributes references :
 
 * basic syntax: `<resource_type>.<resource_name>.<attribute>`
