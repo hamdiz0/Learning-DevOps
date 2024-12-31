@@ -679,10 +679,10 @@
 
 ## `using git commits` :
 
-    * use "ngrok" if jenkins is running on a localhost :
-        - ngrok http <host>:<port>
-        - ngrok http localhost:8080
-    * in webhook payload field put "ngrok/jenkins-url/github-webhook"
+* use "ngrok" or another tunneling rool if jenkins is running on youre machine and not exposed publicly :
+    - ngrok http <host>:<port>
+    - ngrok http localhost:8080
+        
 * ngrok gives one random free dns name when u create an account <a href="https://ngrok.com/">visit ngrok</a> :
 ```
     ngrok http <port on youre local machine you want to forward> --url=<ngrok free dns url>
@@ -691,47 +691,48 @@
 
 ### `github` :
 
-    * for each repo in github you can add a webhook
+* for each repo in github you can add multiple webhook triggers
 
 <img src="img/jen34.PNG" width="100%" height="400px">
 
 ### `gitlab` :
 
-    * install gitlab plugin 
-    * add an api token in gitlab 
+* install gitlab plugin 
+* add an api token in gitlab 
 
 <img src="img/jen31.PNG" width="100%" height="400px">
 
-    * create and add a connection to a gitlab in jenkins
+* create and add a connection to a gitlab in jenkins
 
 <img src="img/jen30.PNG" width="100%" height="400px">
 
-    * trigger builds with pushes
+* trigger builds with pushes
 
 <img src="img/jen32.PNG" width="100%" height="400px">
 
-    * for each repo in gitlab you can add jenkins integration
-    * in the integration settings add jenkins url ,project/job name ,username and password
+* for each repo in gitlab you can add jenkins integration
+* in the integration settings add jenkins url ,project/job name ,username and password
 
 <img src="img/jen33.PNG" width="100%" height="400px">
 
 ## `multibranch triggers` :
 
-    * a plugin called "Multibranch Scan Webhook Trigger" must be installed
+* a plugin called "Multibranch Scan Webhook Trigger" must be installed
 
 <img src="img/jen36.PNG" width="100%" height="400px">
 
-    * create a webhook in the git repo setting with url :
-        - <JENKINS_URL>/multibranch-webhook-trigger/invoke?token=<Trigger token>
-        - https://09e6-102-157-32-128.ngrok-free.app/multibranch-webhook-trigger/invoke?token=gitlab-token
+* create a webhook in the git repo setting with url :
+  - `<JENKINS_URL>/multibranch-webhook-trigger/invoke?token=<Trigger token>`
+  - example :
+      - `https://09e6-102-157-32-128.ngrok-free.app/multibranch-webhook-trigger/invoke?token=gitlab-token`
 
 <br>
 
-    * gitlab :
+* gitlab :
 
 <img src="img/jen37.PNG" width="100%" height="400px">
 
-    * github :
+* github :
 
 <img src="img/jen38.PNG" width="100%" height="400px">
 
